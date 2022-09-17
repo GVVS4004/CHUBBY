@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if dataPresence %}
+        Update Item
+        {% else %}
+        Add Item
+        {% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin: 0 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h2 class="text-center">
+            {% if dataPresence %}
+            Update Item
+            {% else %}
+            Add Item
+            {% endif %}
+        </h2>
+        <form action="/push-data/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if dataPresence %}
+                <input type="hidden" name="item-id" value="{{ data.id }}" />
+            {% endif %}
+            <div class="form-group row">
+                <label for="fname" class="col-sm-3 col-md-2">Food Name</label>
+                <div class="col-sm-9 col-md-10">
+                    <input type="text" name="fname" id="fname" class="form-control" {% if dataPresence %}value="{{ data.food }}"{% endif %} />
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="rname" class="col-sm-3 col-md-2">Restaurant Name</label>
+                <div class="col-sm-9 col-md-10">
+                    <input type="text" name="rname" id="rname" class="form-control" {% if dataPresence %}value="{{ data.restaurant }}"{% endif %} />
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="image" class="col-sm-3 col-md-2">Image</label>
+                <div class="col-sm-9 col-md-10">
+                    <input type="file" class="form-control" id="image" name="image" accept=".png,.jpg,.jpeg,.svg,.gif,.avif,.webp" />
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="place" class="col-sm-3 col-md-2">Place</label>
+                <div class="col-sm-9 col-md-10">
+                    <input type="text" name="place" id="place" class="form-control" {% if dataPresence %}value="{{ data.place }}"{% endif %} />
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="rating" class="col-sm-3 col-md-2">Rating</label>
+                <div class="col-sm-9 col-md-10">
+                    <input type="text" name="rating" id="rating" class="form-control" {% if dataPresence %}value="{{ data.rating }}"{% endif %} />
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="price" class="col-sm-3 col-md-2">Price</label>
+                <div class="col-sm-9 col-md-10">
+                    <input type="text" name="price" id="price" class="form-control" {% if dataPresence %}value="{{ data.cost }}"{% endif %} />
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="text-center row">
+                <p class="col-1"></p>
+                <input type="submit" {% if dataPresence %}value="UPDATE"{% else %}value="UPLOAD"{% endif %} class="btn btn-primary col-10" {% if dataPresence %}name="update"{% else %}name="upload"{% endif %} />
+                <p class="col-1"></p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

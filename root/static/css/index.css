@@ -1,0 +1,142 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+@keyframes changeBgOnHover {
+  0% {
+    background: linear-gradient(120deg, #fff 25%, #FC8019 26%);
+  }
+  25% {
+    background: linear-gradient(120deg, #fff 50%, #FC8019 51%);
+  }
+  50% {
+    background: linear-gradient(120deg, #fff 75%, #FC8019 76%);
+  }
+  100% {
+    background: linear-gradient(120deg, #fff 100%, #FC8019 101%);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+body {
+  padding-bottom: 2.5rem;
+}
+
+nav {
+  margin-top: 2rem;
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+nav ul li {
+  list-style: none;
+  transition: 300ms ease-in;
+}
+nav ul li > a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  border: 1px solid #FC8019;
+  padding: 8px 3rem;
+  border-radius: 25px;
+  background-color: #FC8019;
+  color: #FFF;
+}
+nav ul li > a:hover {
+  animation: changeBgOnHover 80ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  color: #FC8019;
+}
+
+hr {
+  margin-top: 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-container .card {
+  cursor: pointer;
+  width: 300px;
+  box-shadow: 5px 5px 20px gray;
+  margin-top: 2rem;
+  margin-left: 1.9rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card-container .card:last-child {
+  margin-right: 1rem;
+}
+.card-container .card > p {
+  margin-left: 0.7rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+.card-container .card > p.rname {
+  font-size: 0.75rem;
+  margin-top: 5px;
+  color: #706e6e;
+  margin-bottom: 1rem;
+}
+.card-container .card > img {
+  object-fit: cover;
+  width: 300px;
+  height: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card-container .card .rating-and-cost {
+  padding-bottom: 0.6rem;
+  margin: 0.3rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-container .card .rating-and-cost .stars {
+  background-color: rgba(250, 70, 42, 0.87);
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 10px;
+}
+.card-container .card .rating-and-cost .stars svg {
+  width: 14px;
+  fill: #fff;
+}
+.card-container .card .rating-and-cost span {
+  color: #fff;
+}
+.card-container .card hr {
+  margin: 10px 0 !important;
+}
+.card-container .card .edit-delete {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.card-container .card .edit-delete a {
+  text-decoration: none;
+}
+.card-container .card .edit-delete a svg {
+  width: 2.2rem;
+  padding: 0.5rem;
+  transition: 200ms ease-in;
+}
+.card-container .card .edit-delete a svg.edit {
+  fill: #219ebc;
+}
+.card-container .card .edit-delete a svg.delete {
+  fill: #d62828;
+}
+.card-container .card .edit-delete a svg:hover {
+  background-color: rgba(224, 218, 218, 0.849);
+  border-radius: 10px;
+}
